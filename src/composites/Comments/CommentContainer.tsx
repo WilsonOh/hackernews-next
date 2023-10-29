@@ -35,7 +35,7 @@ export default function CommentContainer({ comment }: Props) {
           · {formatDistanceToNow(comment.time * 1000)} ago
         </div>
       </div>
-      <div className="text-sm gap-2 border-l-2 border-primary bg-primary-foreground pt-3 pe-3 ps-5 break-all">
+      <div className="text-sm gap-2 border-l-2 border-primary bg-primary-foreground p-3 ps-5 break-all">
         <div className="flex items-start flex-col">
           {comment.text && parse(comment.text)}
           {comment.kids && comment.kids.length > 0 && (
