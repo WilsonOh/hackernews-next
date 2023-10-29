@@ -9,7 +9,6 @@ import { getItem } from "@/lib/hackernews/hackernews.service";
 import { getUrlDomain, getWebsiteFaviconUrl } from "@/lib/utils";
 import { formatDistanceToNowStrict } from "date-fns";
 import { Clock, Globe, MessageSquare, ThumbsUp } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
