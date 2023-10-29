@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getItem } from "@/lib/hackernews/hackernews.service";
-import { getWebsiteIcon as getWebsiteIconUrl } from "@/lib/utils";
+import { getUrlDomain, getWebsiteFaviconUrl } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Globe, MessageSquare } from "lucide-react";
 import Image from "next/image";
@@ -25,25 +25,25 @@ export async function Post({ id, idx }: Props) {
     return null;
   }
 
-  const iconUrl = post.url && (await getWebsiteIconUrl(post.url));
+  const iconUrl = post.url && getWebsiteFaviconUrl(post.url);
 
   return (
-    <Card className="w-full flex-wrap flex justify-between items-center">
+    <Card className="w-full flex justify-between items-center pb-4">
       <div className="flex items-baseline">
         <span className="ms-4 text-muted-foreground">{idx + 1}.</span>
-        <CardHeader>
+        <CardHeader className="shrink">
           <CardTitle>{post.title}</CardTitle>
           <CardDescription className="flex gap-2 h-5 flex-wrap">
             {post.url && (
               <>
                 {" "}
-                <Link className="flex gap-2" href={post.url}>
+                <Link className="flex gap-2 max-w-xs" href={post.url}>
                   {iconUrl ? (
                     <Image src={iconUrl} alt={iconUrl} width={20} height={20} />
                   ) : (
                     <Globe size={20} />
                   )}
-                  <span className="truncate max-w-sm">{post.url}</span>
+                  <span className="truncate">{getUrlDomain(post.url)}</span>
                 </Link>
                 <Separator orientation="vertical" />{" "}
               </>

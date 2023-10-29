@@ -4,6 +4,7 @@ import ItemMetadata from "@/composites/ItemMetadata";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { getUserProfileLink } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
+import parse from "html-react-parser";
 import { Clock, MessagesSquareIcon, ThumbsUp, UserCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -36,6 +37,7 @@ export default function ItemTemplate({ item }: Props) {
           </Link>
         )}
       </div>
+      {item.text && <div>{parse(item.text)}</div>}
       <Separator />
       <Comments item={item} />
     </div>
