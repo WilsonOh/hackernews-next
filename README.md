@@ -31,7 +31,7 @@ docker run -p 3000:3000 -d <your image name>:<your tag>
 
 # Roadmap
 * [x] Pages for each stories category (best, new, job etc.)
-* [x] Card view of items for each stories page
+* [x] Card view of items for each stories page with pagination
 * [x] Item page with collapsible comments
 * [x] Mobile responsive view for stories page and item page
 * [ ] Sorting of stories by score, number of comments, date created etc.
