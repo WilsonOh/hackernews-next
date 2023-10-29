@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "@/composites/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-secondary`}>
         <Navbar />
         <main className="md:container">{children}</main>
+        <Analytics />
       </body>
     </html>
   );
