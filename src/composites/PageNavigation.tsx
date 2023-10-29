@@ -29,12 +29,12 @@ export default function PageNavigation({
   return (
     <div className="inline-flex rounded-md shadow-sm justify-center w-full my-4">
       {pageNumber > 0 && (
-        <Button variant="outline" onClick={goPrevPage}>
+        <Button variant="default" onClick={goPrevPage}>
           <ArrowBigLeft />
         </Button>
       )}
       {pageNumber < maxPage - 1 && (
-        <Button variant="outline" onClick={goNextPage}>
+        <Button variant="default" onClick={goNextPage}>
           <ArrowBigRight />
         </Button>
       )}
