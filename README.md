@@ -9,6 +9,20 @@ The web app is currently [deployed](https://hackernews-next-wilsonoh.vercel.app)
 * [shadcn](https://ui.shadcn.com/)
 * [zod](https://zod.dev/)
 
+# Running locally
+## The usual way
+```shell
+git clone https://github.com/WilsonOh/hackernews-next.git
+npm i
+npm run dev
+```
+## Docker
+```shell
+git clone https://github.com/WilsonOh/hackernews-next.git
+docker build -t <your image name>:<your tag> .
+docker run -p 3000:3000 -d <your image name>:<your tag>
+```
+
 # Screenshots
 <img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/dc372b22-9538-4f99-9857-dc8d7f8faec6">
 <img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/34c17801-caed-4185-8bf2-e1e264e31db2">
