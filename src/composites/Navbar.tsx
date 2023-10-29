@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Category, categories } from "@/utils/constants";
+import { GithubIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,6 +35,9 @@ export default function Navbar() {
           })}
         </ul>
       </div>
+      <Link href="https://github.com/WilsonOh/hackernews-next" target="_blank">
+        <GithubIcon size={30} />
+      </Link>
     </nav>
   );
 }
