@@ -24,7 +24,7 @@ export default function CommentContainer({ comment }: Props) {
   return (
     <div>
       <div className="flex w-full gap-2 divide-x-2 text-sm font-light">
-        <div className="">
+        <div>
           <Link
             className="hover:underline"
             target="_blank"
@@ -35,13 +35,14 @@ export default function CommentContainer({ comment }: Props) {
           · {formatDistanceToNow(comment.time * 1000)} ago
         </div>
       </div>
-      <div className="flex flex-col text-sm gap-2 border-l-2 border-primary bg-primary-foreground p-2 ps-5">
-        <div>
+      <div className="text-sm gap-2 border-l-2 border-primary bg-primary-foreground pt-3 pe-3 ps-5 break-all">
+        <div className="flex items-start flex-col">
           {comment.text && parse(comment.text)}
           {comment.kids && comment.kids.length > 0 && (
             <Button
               onClick={() => setExpandChildren((prev) => !prev)}
               variant="link"
+              className="ps-0"
             >
               {`${comment.kids.length} ${
                 comment.kids.length === 1 ? "comment" : "comments"

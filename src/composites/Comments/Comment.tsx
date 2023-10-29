@@ -1,7 +1,7 @@
 "use client";
 
+import LoadingComment from "../Loading/LoadingComment";
 import CommentContainer from "./CommentContainer";
-import Spinner from "@/components/ui/spinner";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import useSWR from "swr";
 
@@ -19,7 +19,7 @@ export default function Comment({ id }: Props) {
   if (isLoading) {
     return (
       <div className="flex justify-center">
-        <Spinner />
+        <LoadingComment />
       </div>
     );
   }
