@@ -1,23 +1,32 @@
 import LoadingPost from "@/composites/Loading/LoadingPost";
+import PageNavigation from "@/composites/PageNavigation";
 import { Post } from "@/composites/Post";
+import { getStories } from "@/lib/hackernews/hackernews.service";
+import { Category } from "@/utils/constants";
+import { env } from "@/utils/env";
 import { Suspense } from "react";
 
-type SectionProps = {
-  section: string;
+type Props = {
+  category: Category;
+  pageNumber: number;
 };
 
-export default async function Section({ section }: SectionProps) {
-  const posts = (await fetch(
-    `https://hacker-news.firebaseio.com/v0/${section}.json`
-  ).then((res) => res.json())) as string[];
-
+export default async function Section({ category, pageNumber }: Props) {
+  const posts = await getStories(category);
+  const cursor = pageNumber * env.pageSize;
+  const maxPage = Math.floor(posts.length / env.pageSize);
   return (
     <div className="flex flex-col overflow-y-scroll justify-center items-baseline">
-      {posts.slice(0, 10).map((postId) => (
-        <Suspense key={postId} fallback={<LoadingPost />}>
-          <Post postId={postId} />
+      {posts.slice(cursor, cursor + env.pageSize).map((id, idx) => (
+        <Suspense key={id} fallback={<LoadingPost />}>
+          <Post idx={idx + cursor} id={id} />
         </Suspense>
       ))}
+      <PageNavigation
+        category={category}
+        pageNumber={pageNumber}
+        maxPage={maxPage}
+      />
     </div>
   );
 }
