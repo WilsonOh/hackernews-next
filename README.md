@@ -4,7 +4,7 @@ I have also challenged myself to make the website responsive on mobile as well.
 The web app is currently [deployed](https://hackernews-next-wilsonoh.vercel.app) on vercel. (excuse the default domain, I haven't bought a custom one yet)
 
 # Tech stack used
-* [Next.js 14](https://nextjs.org/)
+* [Next.js 14](https://nextjs.org/) with Typescript
 * [tailwindcss](https://tailwindcss.com/)
 * [shadcn](https://ui.shadcn.com/)
 * [zod](https://zod.dev/)
