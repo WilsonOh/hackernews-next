@@ -8,7 +8,8 @@ import {
 import { getItem } from "@/lib/hackernews/hackernews.service";
 import { getUrlDomain, getWebsiteFaviconUrl } from "@/lib/utils";
 import { formatDistanceToNowStrict } from "date-fns";
-import { Clock, Globe, MessageSquare, ThumbsUp } from "lucide-react";
+import { Clock, MessageSquare, ThumbsUp } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -36,12 +37,14 @@ export async function Post({ id, idx }: Props) {
               <>
                 {" "}
                 <Link className="flex gap-2 max-w-[10rem]" href={post.url}>
-                  {iconUrl ? (
-                    // the icons don't load properly with next/image somehow
-                    // eslint-disable-next-line
-                    <img src={iconUrl} alt={iconUrl} width={20} height={20} />
-                  ) : (
-                    <Globe size={20} />
+                  {iconUrl && (
+                    <Image
+                      unoptimized
+                      src={iconUrl}
+                      alt={iconUrl}
+                      width={20}
+                      height={20}
+                    />
                   )}
                   <span className="truncate">{getUrlDomain(post.url)}</span>
                 </Link>
