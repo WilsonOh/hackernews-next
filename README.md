@@ -31,10 +31,10 @@ docker run -p 3000:3000 -d <your image name>:<your tag>
 
 # Screenshots
 
-<img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/dc372b22-9538-4f99-9857-dc8d7f8faec6">
-<img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/34c17801-caed-4185-8bf2-e1e264e31db2">
-<img width="139" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/84254fce-3cce-4cce-9155-6691b354ba26">
-<img width="139" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/41b03bda-fefc-4526-aa1a-8cd1b45dd9c3">
+<img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/e2215bd6-8980-49bc-a762-72d9383f3b88">
+<img width="500" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/6c570e60-b500-4ca2-934e-70fc9bce04a7">
+<img width="188" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/4bb335a3-cd8d-4678-9c7f-eab6580c2e69">
+<img width="188" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/d0b34a8e-6563-4db8-9778-22db48178310">
 
 # Roadmap
 
