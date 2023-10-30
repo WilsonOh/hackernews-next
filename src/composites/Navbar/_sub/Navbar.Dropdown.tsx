@@ -23,12 +23,14 @@ export function NavbarDropdown({ currentCategory, setCurrentCategory }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="capitalize text-md">
-          <div className="me-2">{currentCategory}</div>{" "}
-          <ChevronDown size="1rem" />
+        <Button asChild variant="ghost" className="capitalize text-md">
+          <div>
+            <div className="me-2">{currentCategory}</div>{" "}
+            <ChevronDown size="1rem" />
+          </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-2xl">
+      <DropdownMenuContent>
         <DropdownMenuLabel className="text-center">
           Categories
         </DropdownMenuLabel>
