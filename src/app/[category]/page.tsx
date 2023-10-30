@@ -1,6 +1,8 @@
+import Spinner from "@/components/ui/spinner";
 import Section from "@/templates/Section";
 import { Category, categories } from "@/utils/constants";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export const revalidate = 60;
 
@@ -17,5 +19,11 @@ export default function CategoryPage({
   if (!categories.includes(category)) {
     return notFound();
   }
-  return <Section pageNumber={pageNumber} category={category} />;
+  return (
+    <div className="flex flex-col overflow-y-scroll justify-center items-baseline">
+      <Suspense fallback={<Spinner />}>
+        <Section pageNumber={pageNumber} category={category} />;
+      </Suspense>
+    </div>
+  );
 }

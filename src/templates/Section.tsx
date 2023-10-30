@@ -16,7 +16,7 @@ export default async function Section({ category, pageNumber }: Props) {
   const cursor = pageNumber * env.pageSize;
   const maxPage = Math.floor(posts.length / env.pageSize);
   return (
-    <div className="flex flex-col overflow-y-scroll justify-center items-baseline">
+    <>
       {posts.slice(cursor, cursor + env.pageSize).map((id, idx) => (
         <Suspense key={id} fallback={<LoadingPost />}>
           <Post idx={idx + cursor} id={id} />
@@ -27,6 +27,6 @@ export default async function Section({ category, pageNumber }: Props) {
         pageNumber={pageNumber}
         maxPage={maxPage}
       />
-    </div>
+    </>
   );
 }
