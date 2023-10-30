@@ -23,6 +23,7 @@
     "html-react-parser": "^4.2.10",
     "lucide-react": "^0.290.0",
     "next": "14.0.0",
+    "next-themes": "^0.2.1",
     "pino": "^8.16.1",
     "pino-pretty": "^10.2.3",
     "react": "^18",

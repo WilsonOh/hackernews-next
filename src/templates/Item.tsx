@@ -39,7 +39,7 @@ export default function ItemTemplate({ item }: Props) {
       </div>
       {item.text && <div>{parse(item.text)}</div>}
       <Separator />
-      <Comments item={item} />
+      <Comments gp={item.by} item={item} />
     </div>
   );
 }

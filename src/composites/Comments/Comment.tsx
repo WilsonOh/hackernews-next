@@ -7,13 +7,14 @@ import useSWR from "swr";
 
 type Props = {
   id: number;
+  gp?: string;
 };
 
 async function fetcher(id: string): Promise<Item> {
   return fetch(`/api/comments?itemId=${id}`).then((res) => res.json());
 }
 
-export default function Comment({ id }: Props) {
+export default function Comment({ id, gp }: Props) {
   const { data: comment, isLoading, error } = useSWR(id.toString(), fetcher);
 
   if (isLoading) {
@@ -28,5 +29,7 @@ export default function Comment({ id }: Props) {
     return null;
   }
 
-  return <>{!error && comment && <CommentContainer comment={comment} />}</>;
+  return (
+    <>{!error && comment && <CommentContainer gp={gp} comment={comment} />}</>
+  );
 }

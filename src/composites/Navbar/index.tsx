@@ -1,5 +1,6 @@
 "use client";
 
+import ThemeToggler from "../ThemeToggler";
 import { NavbarDropdown } from "./_sub/Navbar.Dropdown";
 import { cn } from "@/lib/utils";
 import { Category, categories } from "@/utils/constants";
@@ -58,9 +59,15 @@ export default function Navbar() {
           })}
         </div>
       </div>
-      <Link href="https://github.com/WilsonOh/hackernews-next" target="_blank">
+      <div className="flex gap-2 items-center">
+        <Link
+          href="https://github.com/WilsonOh/hackernews-next"
+          target="_blank"
+        >
+          <ThemeToggler />
+        </Link>
         <GithubIcon />
-      </Link>
+      </div>
     </nav>
   );
 }
