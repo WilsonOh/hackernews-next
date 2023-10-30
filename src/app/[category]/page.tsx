@@ -2,6 +2,8 @@ import Section from "@/templates/Section";
 import { Category, categories } from "@/utils/constants";
 import { notFound } from "next/navigation";
 
+export const revalidate = 60;
+
 export default function CategoryPage({
   params,
   searchParams,
