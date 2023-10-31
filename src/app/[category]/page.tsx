@@ -20,9 +20,9 @@ export default function CategoryPage({
     return notFound();
   }
   return (
-    <div className="flex flex-col overflow-y-scroll justify-center items-baseline">
+    <div className="flex flex-col justify-center items-baseline">
       <Suspense fallback={<Spinner />}>
-        <Section pageNumber={pageNumber} category={category} />;
+        <Section pageNumber={pageNumber} category={category} />
       </Suspense>
     </div>
   );
