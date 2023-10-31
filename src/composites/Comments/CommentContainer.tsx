@@ -35,11 +35,11 @@ export default function CommentContainer({
   const commentsClass = cn({
     "text-sm gap-2 border-primary text-secondary-foreground bg-background break-words":
       true,
-    "border-l-2 ps-5": !isDirectChild,
+    "border-l-2 ps-2 lg:ps-5": !isDirectChild,
   });
 
   const containerClass = cn({
-    "ms-2": !isDirectChild,
+    "ms-1 lg:ms-2": !isDirectChild,
   });
 
   return (
