@@ -1,6 +1,7 @@
 "use client";
 
 import Comments from ".";
+import "./CommentContainer.styles.scss";
 import { Button } from "@/components/ui/button";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { cn, getUserProfileLink } from "@/lib/utils";
@@ -40,9 +41,11 @@ export default function CommentContainer({ comment, gp }: Props) {
           · {formatDistanceToNow(comment.time * 1000)} ago
         </div>
       </div>
-      <div className="text-sm gap-2 border-l-2 border-primary text-secondary-foreground bg-background p-3 ps-5 break-all">
+      <div className="text-sm gap-2 border-l-2 border-primary text-secondary-foreground bg-background ps-5 break-words">
         <div className="flex items-start flex-col">
-          {comment.text && parse(comment.text)}
+          {comment.text && (
+            <div id="comments-container">{parse(comment.text)}</div>
+          )}
           {comment.kids && comment.kids.length > 0 && (
             <Button
               onClick={() => setExpandChildren((prev) => !prev)}
