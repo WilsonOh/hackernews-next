@@ -60,13 +60,13 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex gap-2 items-center">
+        <ThemeToggler />
         <Link
           href="https://github.com/WilsonOh/hackernews-next"
           target="_blank"
         >
-          <ThemeToggler />
+          <GithubIcon />
         </Link>
-        <GithubIcon />
       </div>
     </nav>
   );
