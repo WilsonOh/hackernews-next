@@ -14,9 +14,14 @@ import { useState } from "react";
 type Props = {
   comment: Item;
   gp?: string;
+  isDirectChild?: boolean;
 };
 
-export default function CommentContainer({ comment, gp }: Props) {
+export default function CommentContainer({
+  comment,
+  gp,
+  isDirectChild,
+}: Props) {
   const [expandChildren, setExpandChildren] = useState(false);
 
   if (!comment.by || !comment.text || comment.text.length == 0) {
@@ -27,12 +32,22 @@ export default function CommentContainer({ comment, gp }: Props) {
     "text-primary font-bold": comment.by === gp,
   });
 
+  const commentsClass = cn({
+    "text-sm gap-2 border-primary text-secondary-foreground bg-background break-words":
+      true,
+    "border-l-2 ps-5": !isDirectChild,
+  });
+
+  const containerClass = cn({
+    "ms-2": !isDirectChild,
+  });
+
   return (
-    <div>
+    <div className={containerClass}>
       <div className="flex w-full gap-2 divide-x-2 text-sm font-light">
-        <div>
+        <div className="text-muted-foreground">
           <Link
-            className="hover:underline"
+            className="hover:underline font-bold"
             target="_blank"
             href={getUserProfileLink(comment.by)}
           >
@@ -41,7 +56,7 @@ export default function CommentContainer({ comment, gp }: Props) {
           · {formatDistanceToNow(comment.time * 1000)} ago
         </div>
       </div>
-      <div className="text-sm gap-2 border-l-2 border-primary text-secondary-foreground bg-background ps-5 break-words">
+      <div className={commentsClass}>
         <div className="flex items-start flex-col">
           {comment.text && (
             <div id="comments-container">{parse(comment.text)}</div>
