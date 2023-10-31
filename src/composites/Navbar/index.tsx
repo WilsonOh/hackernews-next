@@ -27,7 +27,7 @@ export default function Navbar() {
   }, [pathName]);
 
   return (
-    <nav className="flex justify-between bg-primary text-center p-2 py-4 sticky top-0 shadow-md items-center">
+    <nav className="flex justify-between bg-primary text-center p-2 py-4 shadow-md items-center">
       <Link href="/">
         <Image src="/y18.svg" alt="y18 logo" width="25" height="25" />
       </Link>
