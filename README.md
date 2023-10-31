@@ -2,7 +2,7 @@
 
 This is a project I created out of my own interest to learn more about [Nextjs app router](https://nextjs.org/docs/app), [React Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components) and styling with [tailwindcss](https://tailwindcss.com/) and [shadcn](https://ui.shadcn.com/).
 I have also challenged myself to make the website responsive on mobile as well.
-The web app is currently [deployed](https://hackernews-next-wilsonoh.vercel.app) on vercel. (excuse the default domain, I haven't bought a custom one yet)
+The web app is currently [deployed](https://hn.oyxw.xyz/) on vercel.
 
 # Tech stack used
 
