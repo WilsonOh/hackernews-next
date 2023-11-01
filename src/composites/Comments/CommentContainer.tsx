@@ -37,9 +37,16 @@ export default function CommentContainer({
     "border-l-2 ps-2 lg:ps-5": !isDirectChild,
   });
 
-  const containerClass = cn({
-    "ms-1 lg:ms-2": !isDirectChild,
+  const animateClass = cn({
+    "animate-in fade-in duration-150": !isDirectChild,
   });
+
+  const containerClass = cn(
+    {
+      "ms-2": !isDirectChild,
+    },
+    animateClass
+  );
 
   return (
     <div className={containerClass}>
