@@ -1,0 +1,11 @@
+.html-container {
+  a {
+    &:hover {
+      @apply underline;
+    }
+    @apply break-all text-blue-600 underline visited:text-purple-600 hover:text-blue-800;
+  }
+  pre {
+    @apply overflow-x-auto bg-muted py-2;
+  }
+}
