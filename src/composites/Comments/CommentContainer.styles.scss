@@ -1,6 +1,0 @@
-#comments-container a {
-  &:hover {
-    @apply underline;
-  }
-  @apply break-all text-blue-600 underline visited:text-purple-600 hover:text-blue-800;
-}

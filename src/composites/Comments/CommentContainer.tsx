@@ -1,7 +1,6 @@
 "use client";
 
 import Comments from ".";
-import "./CommentContainer.styles.scss";
 import { Button } from "@/components/ui/button";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { cn, getUserProfileLink } from "@/lib/utils";
@@ -59,7 +58,9 @@ export default function CommentContainer({
       <div className={commentsClass}>
         <div className="flex items-start flex-col">
           {comment.text && (
-            <div id="comments-container">{parse(comment.text)}</div>
+            <div className="max-w-full html-container">
+              {parse(comment.text)}
+            </div>
           )}
           {comment.kids && comment.kids.length > 0 && (
             <Button
