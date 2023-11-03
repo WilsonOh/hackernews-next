@@ -8,25 +8,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Category, categories } from "@/utils/constants";
+import { useConfig } from "@/contexts/ConfigProvider";
+import { categories } from "@/utils/constants";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  currentCategory: Category;
-  setCurrentCategory: (category: Category) => void;
-};
-
-export function NavbarDropdown({ currentCategory, setCurrentCategory }: Props) {
+export default function CategoriesDropdown() {
   const router = useRouter();
+  const { category, setCategory } = useConfig();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button asChild variant="ghost" className="capitalize text-md">
           <div>
-            <div className="me-2">{currentCategory}</div>{" "}
-            <ChevronDown size="1rem" />
+            <div className="me-2">{category}</div> <ChevronDown size="1rem" />
           </div>
         </Button>
       </DropdownMenuTrigger>
@@ -41,7 +37,7 @@ export function NavbarDropdown({ currentCategory, setCurrentCategory }: Props) {
               key={category}
               className="justify-center capitalize"
               onClick={() => {
-                setCurrentCategory(category);
+                setCategory(category);
                 router.push(`/${category}`);
               }}
             >
