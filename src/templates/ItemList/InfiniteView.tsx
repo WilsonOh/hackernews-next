@@ -32,7 +32,6 @@ export default function InfiniteItemList({ category }: Props) {
   const lastItemRef = useRef<HTMLDivElement>(null);
   const { ref, entry } = useIntersection({
     root: lastItemRef.current,
-    threshold: 1,
   });
 
   const isLoadingMore =
@@ -44,8 +43,11 @@ export default function InfiniteItemList({ category }: Props) {
     isEmpty || (data && data[data.length - 1]?.length < env.pageSize);
 
   useEffect(() => {
+    if (!entry) {
+      return;
+    }
     if (
-      (entry?.isIntersecting || entry?.intersectionRatio == 1) &&
+      (entry.isIntersecting || entry.intersectionRatio > 0) &&
       !isReachingEnd
     ) {
       setSize(size + 1);
