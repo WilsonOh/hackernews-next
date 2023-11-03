@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { githubLink } from "@/utils/constants";
+import { githubLink } from "@/utils/links";
 import Link from "next/link";
 
 export default function Error({ error }: { error: Error }) {

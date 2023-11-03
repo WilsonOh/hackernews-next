@@ -1,6 +1,6 @@
+import ItemMetadata from "./_sub/ItemMetadata";
 import { Separator } from "@/components/ui/separator";
 import Comments from "@/composites/Comments";
-import ItemMetadata from "@/composites/ItemMetadata";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { getUrlDomain, getUserProfileLink } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
@@ -12,7 +12,7 @@ type Props = {
   item: Item;
 };
 
-export default function ItemTemplate({ item }: Props) {
+export default function ItemPage({ item }: Props) {
   return (
     <div className="flex flex-col my-2 mx-3 gap-2">
       <h1 className="text-2xl font-bold">{item.title}</h1>

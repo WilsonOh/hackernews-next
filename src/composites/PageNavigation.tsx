@@ -1,20 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Category } from "@/utils/constants";
+import { Category } from "@/utils/types";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type Props = {
   category: Category;
   pageNumber: number;
-  maxPage: number;
+  isLastPage: boolean;
 };
 
 export default function PageNavigation({
   category,
   pageNumber,
-  maxPage,
+  isLastPage,
 }: Props) {
   const router = useRouter();
 
@@ -33,7 +33,7 @@ export default function PageNavigation({
           <ArrowBigLeft />
         </Button>
       )}
-      {pageNumber < maxPage - 1 && (
+      {!isLastPage && (
         <Button variant="outline" onClick={goNextPage}>
           <ArrowBigRight />
         </Button>

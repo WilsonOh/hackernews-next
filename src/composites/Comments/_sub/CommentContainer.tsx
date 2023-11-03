@@ -1,6 +1,6 @@
 "use client";
 
-import Comments from ".";
+import Comments from "..";
 import { Button } from "@/components/ui/button";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { cn, getUserProfileLink } from "@/lib/utils";

@@ -1,7 +1,7 @@
 "use client";
 
-import LoadingComment from "../Loading/LoadingComment";
 import CommentContainer from "./CommentContainer";
+import LoadingComment from "@/composites/Loading/LoadingComment";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import useSWR from "swr";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 async function fetcher(id: string): Promise<Item> {
-  return fetch(`/api/comments?itemId=${id}`).then((res) => res.json());
+  return fetch(`/api/items?id=${id}`).then((res) => res.json());
 }
 
 export default function Comment({ id, gp, isDirectChild }: Props) {

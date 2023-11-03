@@ -1,4 +1,4 @@
-import Comment from "./Comment";
+import Comment from "./_sub/Comment";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 
 type Props = {

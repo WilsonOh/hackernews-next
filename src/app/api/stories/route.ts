@@ -1,8 +1,8 @@
-import { Item } from "@/lib/hackernews/hackernews.schema";
-import { getItem, getStories } from "@/lib/hackernews/hackernews.service";
-import { Category, categories } from "@/utils/constants";
+import { getStories } from "@/lib/hackernews/hackernews.service";
+import { categories } from "@/utils/constants";
 import { env } from "@/utils/env";
 import { logger } from "@/utils/logger";
+import { Category } from "@/utils/types";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -30,17 +30,7 @@ export async function GET(req: NextRequest) {
   const cursor = env.pageSize * parseInt(pageIndex);
   const stories = await getStories(category);
   const page = stories.slice(cursor, cursor + env.pageSize);
-  logger.info(page, "Fetching stories");
-  const settledResults = await Promise.allSettled(
-    page.map((story) => getItem(story))
-  );
-  const items = settledResults
-    .map((settledResult) =>
-      settledResult.status === "fulfilled" ? settledResult.value : null
-    )
-    .filter((item) => item != null) as Item[];
-
-  logger.info(`Successfully fetched ${items.length} items`);
-  logger.debug({ items });
-  return Response.json(items);
+  logger.info(`Sucessfully retrieved ${page.length} stories`);
+  logger.debug({ stories: page });
+  return Response.json(page);
 }
