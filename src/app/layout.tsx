@@ -1,8 +1,7 @@
-import "./globals.css";
+import "@/app/globals.scss";
 import Navbar from "@/composites/Navbar";
 import { ConfigProvider } from "@/contexts/ConfigProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
-import "@/styles/htmlContent.scss";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";

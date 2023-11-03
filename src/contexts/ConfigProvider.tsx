@@ -1,6 +1,7 @@
 "use client";
 
-import { Category, PageView } from "@/utils/constants";
+import { Category, PageView } from "@/utils/types";
+import { useLocalStorage } from "@mantine/hooks";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 type ConsumerProps = {
@@ -19,14 +20,17 @@ const SettingsContext = createContext<ConsumerProps>({} as ConsumerProps);
 export const useConfig = () => useContext(SettingsContext);
 
 export function ConfigProvider({ children }: ProviderProps) {
+  const [pageView, setPageView] = useLocalStorage<PageView>({
+    key: "pageView",
+    defaultValue: "paginated",
+  });
   const [category, setCategory] = useState<Category>("top");
-  const [pageView, setPageView] = useState<PageView>("paginated");
 
   return (
     <SettingsContext.Provider
       value={{
         category,
-        pageView,
+        pageView: pageView || "paginated",
         setPageView,
         setCategory,
       }}

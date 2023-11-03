@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -5,25 +7,43 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import LoadingPost from "@/composites/Loading/LoadingPost";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { getUrlDomain, getWebsiteFaviconUrl } from "@/lib/utils";
 import { formatDistanceToNowStrict } from "date-fns";
 import { Clock, MessageSquare, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { forwardRef } from "react";
+import useSWR from "swr";
 
 type Props = {
-  post: Item;
+  id: number;
   idx: number;
-  innerRef?: (instance: Element | null) => void;
 };
 
-export default function StoryCard({ post, idx, innerRef }: Props) {
+const fetcher = (id: string) =>
+  fetch(`/api/items?id=${id}`).then((res) => res.json());
+
+const ItemCard = forwardRef<HTMLDivElement, Props>(function ItemCard(
+  { id, idx }: Props,
+  ref
+) {
+  const { data: post, isLoading } = useSWR<Item>(id.toString(), fetcher);
+
+  if (isLoading) {
+    return <LoadingPost />;
+  }
+
+  if (!post) {
+    return null;
+  }
+
   const iconUrl = post.url && getWebsiteFaviconUrl(post.url);
 
   return (
     <Card
-      ref={innerRef}
+      ref={ref}
       className="w-full flex justify-between items-center pb-4 min-w-0 overflow-auto"
     >
       <div className="flex items-baseline">
@@ -67,4 +87,5 @@ export default function StoryCard({ post, idx, innerRef }: Props) {
       </Button>
     </Card>
   );
-}
+});
+export default ItemCard;

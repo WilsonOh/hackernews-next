@@ -8,24 +8,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useConfig } from "@/contexts/ConfigProvider";
 import { cn } from "@/lib/utils";
-import { PageView, pageViews } from "@/utils/constants";
+import { pageViews } from "@/utils/constants";
 import { BookOpenTextIcon, ChevronDown, MouseIcon } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
 export default function PageViewDropdown() {
-  const { pageView, setPageView, category } = useConfig();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const urlPageView = searchParams.get("pageView") as PageView;
-    if (urlPageView === "infinite") {
-      setPageView("infinite");
-    } else {
-      setPageView("paginated");
-    }
-  }, [searchParams, setPageView]);
+  const { pageView, setPageView } = useConfig();
 
   return (
     <DropdownMenu>
@@ -36,14 +23,10 @@ export default function PageViewDropdown() {
           className="capitalize text-md p-0 hover:bg-transparent"
         >
           <div className="">
-            <div className="me-2">
-              {pageView === "infinite" ? (
-                <MouseIcon size="1rem" />
-              ) : (
-                <BookOpenTextIcon size="1rem" />
-              )}
+            <div className="me-2 max-w-4 lg:max-w-8">
+              {pageView === "infinite" ? <MouseIcon /> : <BookOpenTextIcon />}
             </div>{" "}
-            <ChevronDown size="1rem" />
+            <ChevronDown />
           </div>
         </Button>
       </DropdownMenuTrigger>
@@ -60,7 +43,6 @@ export default function PageViewDropdown() {
                 className={menuItemClass}
                 onClick={() => {
                   setPageView(option);
-                  router.push(`/${category}?pageView=${option}`);
                 }}
               >
                 {option} view

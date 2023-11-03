@@ -1,6 +1,7 @@
 import { Item, ItemSchema, User, UserSchema } from "./hackernews.schema";
-import { Category, apiBaseUrl } from "@/utils/constants";
+import { apiBaseUrl } from "@/utils/links";
 import { logger } from "@/utils/logger";
+import { Category } from "@/utils/types";
 
 export async function getItem(id: number): Promise<Item | null> {
   logger.info(`Retrieving item ${id}`);
