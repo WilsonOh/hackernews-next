@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "@/composites/Navbar";
+import { ConfigProvider } from "@/contexts/ConfigProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import "@/styles/htmlContent.scss";
 import { Analytics } from "@vercel/analytics/react";
@@ -22,9 +23,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <main className="md:container bg-background">{children}</main>
-          <Analytics />
+          <ConfigProvider>
+            <Navbar />
+            <main className="md:container bg-background">{children}</main>
+            <Analytics />
+          </ConfigProvider>
         </ThemeProvider>
       </body>
     </html>

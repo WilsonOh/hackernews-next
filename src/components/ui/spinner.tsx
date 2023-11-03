@@ -1,12 +1,24 @@
-export default function Spinner() {
+import { cn } from "@/lib/utils";
+
+type Props = {
+  type: "page" | "inline";
+  className?: string;
+  size?: number;
+};
+
+export default function Spinner({ type, className, size = 11 }: Props) {
+  const spinnerClass = cn(
+    {
+      "h-screen w-full flex justify-center items-center": type === "page",
+    },
+    className
+  );
+
   return (
-    <div
-      role="status"
-      className="h-screen w-full flex justify-center items-center"
-    >
+    <div role="status" className={spinnerClass}>
       <svg
         aria-hidden="true"
-        className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
+        className={`w-${size} h-${size} mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

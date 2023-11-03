@@ -11,7 +11,10 @@ type Props = {
   pageNumber: number;
 };
 
-export default async function Section({ category, pageNumber }: Props) {
+export default async function PaginatedStoryList({
+  category,
+  pageNumber,
+}: Props) {
   const posts = await getStories(category);
   const cursor = pageNumber * env.pageSize;
   const maxPage = Math.floor(posts.length / env.pageSize);

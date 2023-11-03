@@ -23,9 +23,9 @@ export async function getItem(id: number): Promise<Item | null> {
 
 export async function getStories(category: Category): Promise<number[]> {
   logger.info(`Retrieving ${category} stories`);
-  const stories = await fetch(`${apiBaseUrl}/${category}stories.json`).then(
+  const stories = (await fetch(`${apiBaseUrl}/${category}stories.json`).then(
     (res) => res.json()
-  );
+  )) as number[];
   logger.info(`Successfully retrieved ${category} stories`);
   logger.debug({ stories });
   return stories;
