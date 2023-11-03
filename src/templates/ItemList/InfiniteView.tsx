@@ -44,7 +44,10 @@ export default function InfiniteItemList({ category }: Props) {
     isEmpty || (data && data[data.length - 1]?.length < env.pageSize);
 
   useEffect(() => {
-    if (entry?.isIntersecting && !isReachingEnd) {
+    if (
+      (entry?.isIntersecting || entry?.intersectionRatio == 1) &&
+      !isReachingEnd
+    ) {
       setSize(size + 1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
