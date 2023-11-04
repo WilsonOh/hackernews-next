@@ -3,8 +3,8 @@ import { Separator } from "@/components/ui/separator";
 import Comments from "@/composites/Comments";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { getUrlDomain, getUserProfileLink } from "@/lib/utils";
+import { parseHtml } from "@/utils/parseHtml";
 import { formatDistanceToNow } from "date-fns";
-import parse from "html-react-parser";
 import { Clock, MessagesSquareIcon, ThumbsUp, UserCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ export default function ItemPage({ item }: Props) {
           </Link>
         )}
       </div>
-      {item.text && <div className="html-container">{parse(item.text)}</div>}
+      {parseHtml(item.text)}
       <Separator />
       <Comments isDirectChild gp={item.by} item={item} />
     </div>
