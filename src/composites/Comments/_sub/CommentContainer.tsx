@@ -4,8 +4,8 @@ import Comments from "..";
 import { Button } from "@/components/ui/button";
 import { Item } from "@/lib/hackernews/hackernews.schema";
 import { cn, getUserProfileLink } from "@/lib/utils";
+import { parseHtml } from "@/utils/parseHtml";
 import { formatDistanceToNow } from "date-fns";
-import parse from "html-react-parser";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -64,11 +64,7 @@ export default function CommentContainer({
       </div>
       <div className={commentsClass}>
         <div className="flex items-start flex-col">
-          {comment.text && (
-            <div className="max-w-full html-container">
-              {parse(comment.text)}
-            </div>
-          )}
+          {parseHtml(comment.text)}
           {comment.kids && comment.kids.length > 0 && (
             <Button
               onClick={() => setExpandChildren((prev) => !prev)}
