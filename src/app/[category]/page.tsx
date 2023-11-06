@@ -1,6 +1,6 @@
 "use client";
 
-import { useConfig } from "@/contexts/ConfigProvider";
+import { usePageView } from "@/hooks/globals";
 import InfiniteItemList from "@/templates/ItemList/InfiniteView";
 import PaginatedItemList from "@/templates/ItemList/PaginatedView";
 import { categories } from "@/utils/constants";
@@ -18,7 +18,7 @@ export default function CategoryPage({ params, searchParams }: Props) {
   const category = params.category as Category;
   const pageNumber = searchParams.p ? parseInt(searchParams.p) : 0;
 
-  const { pageView } = useConfig();
+  const { pageView } = usePageView();
 
   if (!categories.includes(category)) {
     return notFound();

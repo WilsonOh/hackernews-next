@@ -3,7 +3,7 @@
 import ThemeToggler from "../ThemeToggler";
 import CategoriesDropdown from "./_sub/CategoriesDropdown";
 import PageViewDropdown from "./_sub/PageviewDropDown";
-import { useConfig } from "@/contexts/ConfigProvider";
+import { useCategory } from "@/hooks/globals";
 import { cn } from "@/lib/utils";
 import { categories } from "@/utils/constants";
 import { githubLink } from "@/utils/links";
@@ -12,13 +12,10 @@ import { GithubIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
-  const { setCategory: setConfigCategory } = useConfig();
-  const [currentCategory, setCurrentCategory] = useState<Category>(
-    categories[0]
-  );
+  const { category: currentCategory, setCategory } = useCategory();
 
   const pathName = usePathname();
   useEffect(() => {
@@ -27,8 +24,9 @@ export default function Navbar() {
     }
     const selectedCategory = pathName.slice(1) as Category;
     if (categories.includes(selectedCategory)) {
-      setCurrentCategory(selectedCategory);
+      setCategory(selectedCategory);
     }
+    // eslint-disable-next-line
   }, [pathName]);
 
   return (
@@ -54,7 +52,7 @@ export default function Navbar() {
                 key={category}
                 href={`/${category}`}
                 className={navItemClass}
-                onClick={() => setConfigCategory(category)}
+                onClick={() => setCategory(category)}
               >
                 {category}
               </Link>

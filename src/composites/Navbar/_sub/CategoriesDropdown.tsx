@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useConfig } from "@/contexts/ConfigProvider";
+import { useCategory } from "@/hooks/globals";
 import { cn } from "@/lib/utils";
 import { categories } from "@/utils/constants";
 import { ChevronDown } from "lucide-react";
@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 
 export default function CategoriesDropdown() {
   const router = useRouter();
-  const { category: configCategory, setCategory } = useConfig();
+  const { category: configCategory, setCategory } = useCategory();
 
   return (
     <DropdownMenu>
