@@ -21,6 +21,7 @@ export const usePageView = create<PageViewState>()(
     }),
     {
       name: "pageViewStore",
+      skipHydration: true,
     }
   )
 );
