@@ -9,10 +9,18 @@ import {
 import { usePageView } from "@/hooks/globals";
 import { cn } from "@/lib/utils";
 import { pageViews } from "@/utils/constants";
+import { PageView } from "@/utils/types";
 import { BookOpenTextIcon, ChevronDown, MouseIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function PageViewDropdown() {
-  const { pageView, setPageView } = usePageView();
+  const { pageView: statePageView, setPageView: stateSetPageView } =
+    usePageView();
+  const [pageView, setPageView] = useState<PageView>("paginated");
+
+  useEffect(() => {
+    setPageView(statePageView);
+  }, [statePageView]);
 
   return (
     <DropdownMenu>
@@ -42,7 +50,7 @@ export default function PageViewDropdown() {
                 key={option}
                 className={menuItemClass}
                 onClick={() => {
-                  setPageView(option);
+                  stateSetPageView(option);
                 }}
               >
                 {option} view
