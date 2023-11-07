@@ -1,56 +1,35 @@
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useConfig } from "@/contexts/ConfigProvider";
-import { cn } from "@/lib/utils";
-import { pageViews } from "@/utils/constants";
-import { BookOpenTextIcon, ChevronDown, MouseIcon } from "lucide-react";
+import { BookOpenTextIcon, MouseIcon } from "lucide-react";
 
-export default function PageViewDropdown() {
+export default function PageViewToggler() {
   const { pageView, setPageView } = useConfig();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          asChild
-          variant="ghost"
-          className="capitalize text-md p-0 hover:bg-transparent"
-        >
-          <div className="">
-            <div className="me-2 max-w-4 lg:max-w-8">
-              {pageView === "infinite" ? <MouseIcon /> : <BookOpenTextIcon />}
-            </div>{" "}
-            <ChevronDown />
-          </div>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuGroup>
-          {pageViews.map((option) => {
-            const menuItemClass = cn({
-              "justify-center capitalize": true,
-              "bg-muted-foreground": option === pageView,
-            });
-            return (
-              <DropdownMenuItem
-                key={option}
-                className={menuItemClass}
-                onClick={() => {
-                  setPageView(option);
-                }}
-              >
-                {option} view
-              </DropdownMenuItem>
-            );
-          })}
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button
+            asChild
+            variant="ghost"
+            className="capitalize text-md p-0 hover:bg-transparent"
+            onClick={() =>
+              setPageView(pageView === "infinite" ? "paginated" : "infinite")
+            }
+          >
+            {pageView === "infinite" ? <MouseIcon /> : <BookOpenTextIcon />}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="capitalize">{pageView} view</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

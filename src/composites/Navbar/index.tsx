@@ -2,7 +2,7 @@
 
 import ThemeToggler from "../ThemeToggler";
 import CategoriesDropdown from "./_sub/CategoriesDropdown";
-import PageViewDropdown from "./_sub/PageviewDropDown";
+import PageViewToggler from "./_sub/PageviewDropDown";
 import { useConfig } from "@/contexts/ConfigProvider";
 import { cn } from "@/lib/utils";
 import { categories } from "@/utils/constants";
@@ -28,7 +28,9 @@ export default function Navbar() {
     const selectedCategory = pathName.slice(1) as Category;
     if (categories.includes(selectedCategory)) {
       setCurrentCategory(selectedCategory);
+      setConfigCategory(selectedCategory);
     }
+    // eslint-disable-next-line
   }, [pathName]);
 
   return (
@@ -63,7 +65,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex gap-2 items-center">
-        <PageViewDropdown />
+        <PageViewToggler />
         <ThemeToggler />
         <Link href={githubLink} target="_blank">
           <GithubIcon />
