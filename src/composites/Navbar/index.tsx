@@ -1,24 +1,22 @@
-"use client";
-
 import ThemeToggler from "../ThemeToggler";
-import CategoriesDropdown from "./_sub/CategoriesDropdown";
 import PageViewToggler from "./_sub/PageviewDropDown";
+import { Button } from "@/components/ui/button";
 import { useConfig } from "@/contexts/ConfigProvider";
-import { cn } from "@/lib/utils";
 import { categories } from "@/utils/constants";
 import { githubLink } from "@/utils/links";
 import { Category } from "@/utils/types";
-import { GithubIcon } from "lucide-react";
+import { GithubIcon, MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function Navbar() {
+type Props = {
+  toggleSideNav: () => void;
+};
+
+export default function Navbar({ toggleSideNav }: Props) {
   const { setCategory: setConfigCategory } = useConfig();
-  const [currentCategory, setCurrentCategory] = useState<Category>(
-    categories[0]
-  );
 
   const pathName = usePathname();
   useEffect(() => {
@@ -27,7 +25,6 @@ export default function Navbar() {
     }
     const selectedCategory = pathName.slice(1) as Category;
     if (categories.includes(selectedCategory)) {
-      setCurrentCategory(selectedCategory);
       setConfigCategory(selectedCategory);
     }
     // eslint-disable-next-line
@@ -38,10 +35,10 @@ export default function Navbar() {
       <Link href="/">
         <Image src="/y18.svg" alt="y18 logo" width="25" height="25" />
       </Link>
-      <div className="lg:hidden grow">
+      {/* <div className="lg:hidden grow">
         <CategoriesDropdown />
-      </div>
-      <div className="hidden lg:flex gap-4 items-baseline">
+      </div> */}
+      {/* <div className="hidden lg:flex gap-4 items-baseline">
         <div className="flex gap-4 h-full">
           {categories.map((category) => {
             const navItemClass = cn({
@@ -63,13 +60,16 @@ export default function Navbar() {
             );
           })}
         </div>
-      </div>
+      </div> */}
       <div className="flex gap-2 items-center">
         <PageViewToggler />
         <ThemeToggler />
         <Link href={githubLink} target="_blank">
           <GithubIcon />
         </Link>
+        <Button onClick={toggleSideNav} className="ms-3 lg:hidden">
+          <MenuIcon />
+        </Button>
       </div>
     </nav>
   );
