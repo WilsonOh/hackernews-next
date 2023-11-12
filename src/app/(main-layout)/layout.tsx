@@ -1,8 +1,8 @@
 "use client";
 
-import { DesktopSideNav } from "@/components/SideNav/DesktopView";
-import { MobileSideNav } from "@/components/SideNav/MobileView";
 import Navbar from "@/composites/Navbar";
+import DesktopSideNav from "@/composites/SideNav/DesktopView";
+import MobileSideNav from "@/composites/SideNav/MobileView";
 import { useState } from "react";
 
 export default function MainLayout({

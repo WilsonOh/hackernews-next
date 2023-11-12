@@ -32,9 +32,14 @@ export default function Navbar({ toggleSideNav }: Props) {
 
   return (
     <nav className="flex justify-between bg-primary text-center p-2 py-4 shadow-md items-center">
-      <Link href="/">
-        <Image src="/y18.svg" alt="y18 logo" width="25" height="25" />
-      </Link>
+      <div className="flex gap-2 items-center">
+        <Button onClick={toggleSideNav} className="lg:hidden">
+          <MenuIcon />
+        </Button>
+        <Link href="/">
+          <Image src="/y18.svg" alt="y18 logo" width="25" height="25" />
+        </Link>
+      </div>
       {/* <div className="lg:hidden grow">
         <CategoriesDropdown />
       </div> */}
@@ -67,9 +72,6 @@ export default function Navbar({ toggleSideNav }: Props) {
         <Link href={githubLink} target="_blank">
           <GithubIcon />
         </Link>
-        <Button onClick={toggleSideNav} className="ms-3 lg:hidden">
-          <MenuIcon />
-        </Button>
       </div>
     </nav>
   );
