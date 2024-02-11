@@ -42,12 +42,19 @@ docker run -p 3000:3000 -d <your image name>:<your tag>
   <img width="188" alt="image" src="https://github.com/WilsonOh/hackernews-next/assets/87934749/d0b34a8e-6563-4db8-9778-22db48178310">
 </details>
 
+# Features
+
+- Dark/Light mode toggle
+- Infinite/Paginated view toggle
+- Mobile-first design
+
 # Roadmap
 
 - [x] Pages for each stories category (best, new, job etc.)
 - [x] Card view of items for each stories page with pagination
 - [x] Item page with collapsible comments
 - [x] Mobile responsive view for stories page and item page
+- [ ] Go between sibling/parent/root nodes in the comments (similar to the original hackernews website)
 - [ ] Sorting of stories by score, number of comments, date created etc.
 - [ ] Filtering of stories by score, date created, date range etc.
 - [ ] Implement bookmarking of items using local storage (probably not gonna use/host a DB for this)
