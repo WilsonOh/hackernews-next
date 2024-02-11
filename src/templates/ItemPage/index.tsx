@@ -14,7 +14,7 @@ type Props = {
 
 export default function ItemPage({ item }: Props) {
   return (
-    <div className="flex flex-col my-2 mx-3 gap-2">
+    <div className="flex flex-col my-2 gap-2 container mx-auto">
       <h1 className="text-2xl font-bold">{item.title}</h1>
       {item.url && (
         <h2 className="text-sm text-muted-foreground max-w-[10rem] truncate hover:underline">

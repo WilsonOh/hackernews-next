@@ -43,9 +43,10 @@ docker run -p 3000:3000 -d <your image name>:<your tag>
 </details>
 
 # Features
-* Dark/Light mode toggle
-* Infinite/Paginated view toggle
-* Mobile-first design
+
+- Dark/Light mode toggle
+- Infinite/Paginated view toggle
+- Mobile-first design
 
 # Roadmap
 
