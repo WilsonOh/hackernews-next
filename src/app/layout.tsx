@@ -8,8 +8,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HackerNews in Nextjs",
-  description: "HackerNews in Nextjs",
+  title: "HackerNews",
+  description: "HackerNews",
 };
 
 export default function RootLayout({
