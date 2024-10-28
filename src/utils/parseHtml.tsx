@@ -13,12 +13,24 @@ export function parseHtml(htmlString?: string): ReactNode {
     replace(domNode) {
       const node = domNode as Element;
       if (node.type === "tag" && node.name === "a") {
+        let href = node.attribs.href;
+        const url = new URL(href);
+        if (
+          url.hostname === "news.ycombinator.com" &&
+          url.pathname === "/item"
+        ) {
+          const id = url.searchParams.get("id");
+          if (id) {
+            href = `/item/${id}`;
+          }
+        }
         return (
           <a
             {...node.attribs}
             target="_blank"
             rel="noopener noreferrer"
             className="break-all text-blue-600 underline visited:text-purple-600 hover:text-blue-800 hover:underline"
+            href={href}
           >
             {domToReact(node.children, options)}
           </a>
